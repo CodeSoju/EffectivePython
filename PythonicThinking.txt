@@ -1,0 +1,67 @@
+Python programmers prefer to be explicit, to choose simple over complex, and to maximize readability. 
+
+Item One: Know which Version of Python you're using
+
+You can also figure out the version of Python you're using at runtime by inspecting values in the sys built-in module. 
+
+import sys
+print(sys.version_info)
+print(sys.version)
+----------------------------------------------
+Item 2: FOllow the PEP 8 Style Guide
+Python Enhancement Proposal 8# is the style guide for how to format Python code
+
+Using a consistent style makes your code more approachable and easier to read. SHaring a common style w/ other PYthon programmers in the larger community facilitates collaboration on projects. 
+
+For the complete rules: www.python.org/dev/peps/pep-0008/
+
+Whitespace: In python, whitespace is syntactically significant. Python programmers are especially sensitive to the effects of whitespace on code clarity 
+
+- LInes should be 79 chars or less
+- Continuations of long exprs onto addtional lines should be indented by 4 extra  spaces 
+
+Naming: 
+- Functions variables & attributes -> lowercase_underscore format
+- Protected instance attributes -> _leading_underscore format
+- Private instance attributes -> __double_leading_underscore format
+- Classes and Exprs -> CaptializedWord format
+- Module-level constants -> ALL_CAPS format
+- Instance methods in classes should use 'self' as the name of the first param (which refers to an object)
+- CLass methods should use 'cls' as the name of the first parameter(which refers to the class)
+
+Order when importing libs:
+   1. Standard library imports
+   2. Related third-party imports
+   3. local application/library specific imports 
+
+Absolute & Relative imports: 
+Absolute imports are preferred in Python, as it adds up more readability. However as complexity increases one can use relative imports.
+
+Absolute import -> an import that uses the absolute path of the function or class, separated by '.'
+Ex: 	import sklearn.linear_model.logisticRegression
+
+Relative import: an import that is relative to the current position where your Python file exists. Use this if your project structure is rowing, allowing for a more readable project. 
+Ex: from ..bubble_sort import BubbleSort
+----------------------------------------------------------------------------------
+Item 3:  Know the difference between bytes, str, unicode
+
+Python 3 exists two types of character sequence representation: 
+	Instances of bytes contain raw 8-bit values
+	Instances of str contain Unicode characters
+
+Python 2:
+	str and unicode (Instances of unicode contain Unicode chars)
+
+MOst common encoding of 8 bit values -> UTF-8 
+
+str instances in Python 3 and unicode instances in Python2 do not have an associated binary encoding. IN order to convert Unicode chars to binary data, you must use the 'encode()' method. To conver binary data to Unicode, use the 'decode()' method
+
+- YOU want to operate on raw 8-bit values that are UTF-8 encode chars (0r some other encoding)
+- Youwant to operate on Unicode characters that have no specific encoding
+
+WHat you will need are two helper functions to convert between these two cases and to ensure that the type of input values matches your code's expectations
+
+Python3: one method that takes a str or bytes and always returns a str. 
+
+	def to_str(bytes_or_str):
+	    if isinstace(bytes_or_str)
